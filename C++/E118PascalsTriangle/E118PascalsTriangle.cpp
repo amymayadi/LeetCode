@@ -1,6 +1,9 @@
 //  Runtime:3ms
 //  main.cpp
 //  E118PascalTriangle
+//  
+//  time:O(n^2)
+//  space:O(n)
 //
 //  Created by MA YADI on 2018/1/10.
 //  Copyright © 2018年 MA YADI. All rights reserved.

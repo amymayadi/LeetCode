@@ -1,7 +1,10 @@
 //  Runtime:4ms
 //  main.cpp
 //  E066PlusOne
-//
+//  
+//  time:O(n)
+//  space:O(1)
+//    
 //  Created by MA YADI on 2018/4/6.
 //  Copyright © 2018年 MA YADI. All rights reserved.
 //

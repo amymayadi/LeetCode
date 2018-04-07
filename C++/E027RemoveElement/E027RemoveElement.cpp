@@ -1,7 +1,10 @@
 //  Runtime: 6 ms
 //  main.cpp
 //  E027RemoveElement
-//
+
+//  time:O(n)
+//  space:O(1)
+
 //  Created by MA YADI on 2018/4/5.
 //  Copyright © 2018年 MA YADI. All rights reserved.
 //

@@ -9,7 +9,7 @@ using namespace std;
 //    void printHello(){
 //        std::cout<<"hello world"<<std::endl;
 //    }
-//
+//    time:O(n^2) space:O(n)
 //    vector<int> twoSum(vector<int> &nums, int target) {
 //        vector<int> res;
 //        int n = nums.size();
@@ -24,6 +24,9 @@ using namespace std;
 //            }
 //    }
 //};
+
+//  time:O(n)
+//  space:O(n)
 
 class Solution {
 public:

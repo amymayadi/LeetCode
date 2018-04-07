@@ -1,4 +1,8 @@
 //  Runtime: 30 ms
+
+//  time:O(n)
+//  space:O(1)
+
 class Solution {
 public:
     int removeDuplicates(vector<int>& nums) {
