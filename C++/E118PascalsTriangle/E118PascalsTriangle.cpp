@@ -1,4 +1,4 @@
-/   Runtime:3ms/
+//  Runtime:3ms
 //  main.cpp
 //  E118PascalTriangle
 //
