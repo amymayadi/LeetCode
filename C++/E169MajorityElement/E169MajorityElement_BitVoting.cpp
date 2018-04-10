@@ -1,41 +1,39 @@
-//  Runtime:31ms
-//  main.cpp
-//  E169MajorityElement
-//  
-//  time:O(n)
-//  space:O(n)
 //
-//  Created by MA YADI on 2018/4/7.
-//  Copyright © 2018年 MA YADI. All rights reserved.
+// Created by MaYadi on 2018/4/10.
 //
-
+/**
+ *  Bit Voting
+ *  time:O(32n)
+ *  space:O(1)
+ */
 #include <iostream>
 #include <vector>
-#include <unordered_map>
 #include <sstream>
+#include <include/c++/algorithm>
+#include <include/c++/bitset>
+
 using namespace std;
 
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        unordered_map<int, int>hash;
-        int i = 0;
-        int n = nums.size();
-        if(1==n)
-            return nums[0];
-        while(i<n){
-            unordered_map<int,int>::const_iterator it=hash.find(nums[i]);
-            if(it==hash.end()){
-                hash.insert(make_pair(nums[i],1));
-                //hash.insert(pair<int,int>(nums[i],1));
-            }else{
-                hash.at(nums[i]) = it->second+1;
-                if(it->second > n/2)
-                    return it->first;
+        const int n = nums.size();
+        int majority = 0;
+        // element type is int, so every num is 32 bit
+        for (int i = 0; i < 32; ++i) {
+            int mask = 1 << i;
+            //cout << bitset<sizeof(int)*8>(mask) <<endl;
+            int count = 0;
+            for (const int num : nums){
+                //cout << num << " num " << "& mask:" << bitset<sizeof(int)*8>(num & mask) << endl; //for every bit, get the most one, if it is not zero
+                if ((num & mask) && (++count > n/2)) {
+                    majority |= mask;    // sum up all the bit that is not zero
+                    //cout << "majority:" << majority << endl;
+                    break;
+                }
             }
-            i++;
         }
-        return INT_MIN;
+        return majority;
     }
 };
 
@@ -70,9 +68,9 @@ int main() {
     string line;
     while (getline(cin, line)) {
         vector<int> nums = stringToIntegerVector(line);
-        
+
         int ret = Solution().majorityElement(nums);
-        
+
         string out = to_string(ret);
         cout << out << endl;
     }

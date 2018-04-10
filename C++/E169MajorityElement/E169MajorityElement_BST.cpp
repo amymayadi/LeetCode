@@ -1,4 +1,4 @@
-// BST (Binary Search Tree)
+// BST (Binary Search Tree) -- map
 // Created by MaYadi on 2018/4/9.
 //  time:O(nlogk)
 //  space:O(n)
