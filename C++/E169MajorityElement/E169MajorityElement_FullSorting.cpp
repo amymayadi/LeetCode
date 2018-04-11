@@ -1,39 +1,23 @@
 //
-// Created by MaYadi on 2018/4/10.
+// Created by MaYadi on 2018/4/11.
 //
 /**
- *  Bit Voting
- *  time:O(n)
+ *  Full Sorting
+ *  time:O(nlogn)
  *  space:O(1)
  */
 #include <iostream>
 #include <vector>
 #include <sstream>
 #include <include/c++/algorithm>
-#include <include/c++/bitset>
 
 using namespace std;
 
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        const int n = nums.size();
-        int majority = 0;
-        // element type is int, so every num is 32 bit
-        for (int i = 0; i < 32; ++i) {
-            int mask = 1 << i;
-            //cout << bitset<sizeof(int)*8>(mask) <<endl;
-            int count = 0;
-            for (const int num : nums){
-                //cout << num << " num " << "& mask:" << bitset<sizeof(int)*8>(num & mask) << endl; //for every bit, get the most one, if it is not zero
-                if ((num & mask) && (++count > n/2)) {
-                    majority |= mask;    // sum up all the bit that is not zero
-                    //cout << "majority:" << majority << endl;
-                    break;
-                }
-            }
-        }
-        return majority;
+        sort(nums.begin(), nums.end());
+        return nums[nums.size()/2];
     }
 };
 
