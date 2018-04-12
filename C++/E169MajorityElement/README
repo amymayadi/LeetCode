@@ -1,0 +1,18 @@
+Method                    |Time Complexity |space Complexity |Running time(ms) |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Hash Table(unordered_map) |O(n)            |O(n)             |23               |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+BST(map)                  |O(nlogk)        |O(1)             |19               |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Randomization             |O(n)            |O(1)             |19~26            |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Bit Voting                |O(32n)          |O(1)             |26~29            |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Boyer-Moore vote          |O(n)            |O(1)             |19~23            |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Full sorting              |O(nlogn)        |O(1)             |26               |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Partial sorting           |O(n) on average |O(1)             |19               |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
+Divide and conquer        |O(n)~O(nlogn)   |O(logn)          |19               |
+  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  
