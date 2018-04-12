@@ -3,11 +3,10 @@ package com.travelsky;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.HashSet;
 
 /**
- * Project Name : Leetcode
- * Package Name : leetcode
  * File Name : ContainsDuplicate
  * Creator : Edward
  * Date : Oct, 2017
@@ -19,6 +18,15 @@ class Solution {
         HashSet<Integer> set = new HashSet<>();
         for (int i = 0; i < nums.length; i++) {
             if (!set.add(nums[i])) return true;
+        }
+        return false;
+    }
+
+    // time : O(nlogn) space : O(1)
+    public boolean containsDuplicate2(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] == nums[i - 1]) return true;
         }
         return false;
     }
@@ -52,6 +60,7 @@ public class ContainsDuplicate {
             int[] nums = stringToIntegerArray(line);
 
             boolean ret = new Solution().containsDuplicate(nums);
+            //boolean ret2 = new Solution().containsDuplicate2(nums);
 
             String out = booleanToString(ret);
 
