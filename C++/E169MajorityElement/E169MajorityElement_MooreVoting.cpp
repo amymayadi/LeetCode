@@ -23,7 +23,7 @@ public:
             if (num == majority) count++;
             else if(count-- == 0) { // not majority then count-1, if count is already one then update majority
                 count = 1;
-                majority = num;
+                majority = num; // majority may be wrong num when nums has no majority.[1,2,2,3],3 is not majority 
             }
         }
         return majority;
