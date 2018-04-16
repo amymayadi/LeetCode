@@ -1,61 +1,44 @@
-//  M228SummaryRanges5
-//
-//  Created by MA YADI on 2018/4/13.
-//  Copyright © 2018年 MA YADI. All rights reserved.
 /**
- * Runtinme: 4ms (SLOW alg)
+ * M228SummaryRanges
+ * Runtinme:
  * time: O(n)
  * space: O(n)
  */
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <include/c++/algorithm>
 
 using namespace std;
 
 class Solution {
 public:
     vector<string> summaryRanges(vector<int>& nums) {
-        vector<string> res;
-        int n = nums.size();
-        if (n == 0)
-            return res;
-        
-        if(n == 1) {
-            string str = to_string(nums[0]);
-            res.push_back(str);
-            return res;
-        }
-        
-        int i = 0;
-        int lt = nums[0];
-        int rt = nums[0];
-        bool bsame = true; // last compare whether the two number is same.
-        while(i<=n-1){
-            string strlt = to_string(lt);
-            string strrt = to_string(rt);
-            if(i == n-1) {
-                if(!bsame)
-                    res.push_back(to_string(nums[n - 1]));
-                else
-                    res.push_back(strlt + "->" + strrt);
-                return res;
+        vector<string> ans(0,"");
+        if(nums.size() == 0) return ans;
+        int L,R;
+        //to_array
+        L = R = nums[0];//初始化左右指针
+        for(int i=1; i<nums.size(); i++)
+        {
+            if(nums[i] == R+1)//尝试将右指针进行拓展
+            {
+                R = nums[i];
             }
-            else if(nums[i+1]>nums[i]+1) {
-                bsame = false;
-                if(rt == lt) {
-                    res.push_back(strlt);
-                }else {
-                    res.push_back(strlt + "->" + strrt);
-                }
-                rt = lt = nums[++i];
-            }
-            else{
-                bsame = true;
-                rt = nums[++i];
+            else
+            {
+                ans.push_back(generate_str(L,R));//无法拓展则合并区间，并移动指针
+                L = R = nums[i];
             }
         }
-        return res;
+        ans.push_back(generate_str(L,R));
+        return ans;
+    }
+    string generate_str(const int &L, const int &R)
+    {
+        if(L == R)
+            return to_string(L);
+        else return to_string(L) + "->" + to_string(R);
     }
 };
 
@@ -90,11 +73,11 @@ string stringVectorToString(vector<string> list, int length = -1) {
     if (length == -1) {
         length = list.size();
     }
-    
+
     if (length == 0) {
         return "[]";
     }
-    
+
     string result;
     for(int index = 0; index < length; index++) {
         string str = list[index];
@@ -107,7 +90,7 @@ int main() {
     string line;
     while (getline(cin, line)) {
         vector<int> nums = stringToIntegerVector(line);
-        
+
         vector<string> ret = Solution().summaryRanges(nums);
         string result = stringVectorToString(ret);
         cout << result;
@@ -117,4 +100,3 @@ int main() {
     }
     return 0;
 }
-

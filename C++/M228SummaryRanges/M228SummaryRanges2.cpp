@@ -1,61 +1,44 @@
-//  M228SummaryRanges5
-//
-//  Created by MA YADI on 2018/4/13.
-//  Copyright © 2018年 MA YADI. All rights reserved.
 /**
- * Runtinme: 4ms (SLOW alg)
+ * M228SummaryRanges2.cpp
+ * Runtinme:
  * time: O(n)
  * space: O(n)
  */
 #include <iostream>
 #include <vector>
 #include <sstream>
+#include <include/c++/algorithm>
+
 
 using namespace std;
 
 class Solution {
 public:
     vector<string> summaryRanges(vector<int>& nums) {
-        vector<string> res;
-        int n = nums.size();
-        if (n == 0)
-            return res;
-        
-        if(n == 1) {
-            string str = to_string(nums[0]);
-            res.push_back(str);
-            return res;
-        }
-        
-        int i = 0;
-        int lt = nums[0];
-        int rt = nums[0];
-        bool bsame = true; // last compare whether the two number is same.
-        while(i<=n-1){
-            string strlt = to_string(lt);
-            string strrt = to_string(rt);
-            if(i == n-1) {
-                if(!bsame)
-                    res.push_back(to_string(nums[n - 1]));
-                else
-                    res.push_back(strlt + "->" + strrt);
-                return res;
-            }
-            else if(nums[i+1]>nums[i]+1) {
-                bsame = false;
-                if(rt == lt) {
-                    res.push_back(strlt);
-                }else {
-                    res.push_back(strlt + "->" + strrt);
+        vector<string> ranges;
+        if (nums.empty())
+            return ranges;
+
+        int start = nums[0], end = nums[0];
+        for (int i = 1; i <= nums.size(); ++i) {
+            if(i < nums.size() && nums[i] == end+1){
+                end = nums[i];
+            } else {
+                // auto&&: I will accept any initializer regardless of
+                // whether it is an lvalue or rvalue expression and I will preserve its constness.
+                auto&& range = to_string(start);
+                if (start != end){
+                    range.append("->" + to_string(end));
                 }
-                rt = lt = nums[++i];
-            }
-            else{
-                bsame = true;
-                rt = nums[++i];
+                // 在容器尾部添加一个元素，这个元素原地构造，不需要触发拷贝构造和转移构造。
+                // 而且调用形式更加简洁，直接根据参数初始化临时对象的成员。
+                ranges.emplace_back(range);
+                if(i < nums.size()) {
+                    start = end = nums[i];
+                }
             }
         }
-        return res;
+        return ranges;
     }
 };
 
@@ -90,11 +73,11 @@ string stringVectorToString(vector<string> list, int length = -1) {
     if (length == -1) {
         length = list.size();
     }
-    
+
     if (length == 0) {
         return "[]";
     }
-    
+
     string result;
     for(int index = 0; index < length; index++) {
         string str = list[index];
@@ -107,7 +90,7 @@ int main() {
     string line;
     while (getline(cin, line)) {
         vector<int> nums = stringToIntegerVector(line);
-        
+
         vector<string> ret = Solution().summaryRanges(nums);
         string result = stringVectorToString(ret);
         cout << result;
@@ -117,4 +100,3 @@ int main() {
     }
     return 0;
 }
-
