@@ -15,11 +15,13 @@ int x=[](){    // NO these code Runtime:33ms
 
 class Solution {
 public:
+    // time:O(n)  space:O(n)
     bool containsDuplicate(vector<int>& nums) {
         unordered_set<int> nums_set(nums.begin(), nums.end());
         return nums_set.size() != nums.size();
     }
 
+    // time:O(nlogn) space:O(1)
     bool containsDuplicate2(vector<int>& nums) {
         sort(nums.begin(), nums.end());
         // unique() @brief: Remove consecutive duplicate values from a sequence.
