@@ -1,6 +1,5 @@
 //
-//  main.cpp
-//  E006ZigZagConversion
+//  M006ZigZagConversion.cpp
 //
 //  Created by MA YADI on 2018/4/19.
 //  Copyright © 2018年 MA YADI. All rights reserved.
